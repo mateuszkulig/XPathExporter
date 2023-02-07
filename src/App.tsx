@@ -1,13 +1,19 @@
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import './App.css'
+import ResultBox from './components/ResultBox'
+import AddXPathButton from './components/AddXPathButton'
+import { xPath } from './model'
 
-function App() {
-  const [count, setCount] = useState(0)
+const App: React.FC = () => {
+
+  const [xpaths, setXPaths] = useState<xPath[]>([]);
 
   return (
     <div className="App">
-      XPathExporter
+      <span className="heading">XPathExporter</span>
+      <ResultBox xpaths={xpaths}></ResultBox>
+      <AddXPathButton xpaths={xpaths} setXPaths={setXPaths}></AddXPathButton>
     </div>
   )
 }
