@@ -10,7 +10,16 @@ const AddXPathButton: React.FC<Props> = ({xpaths, setXPaths}) => {
   return (
     <button 
         className="add-button"
-        onClick={() => setXPaths(xpaths.concat({id: 1, value: "another one"}))}
+        onClick={() => {
+          chrome.tabs.query({
+            active: true, currentWindow: true},
+            (tabs) => {
+              const currentTabId: any = tabs[0].id;
+              console.log(currentTabId);
+              chrome.scripting.executeScript({target: {tabId: currentTabId}, func: () => {console.log("hello from extension!")}})});
+          setXPaths(xpaths.concat({id: 1, value: "another one"}));
+          
+        }}
         >
         Add
     </button>
