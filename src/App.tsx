@@ -2,7 +2,9 @@ import { useState } from 'react'
 import './App.css'
 import ResultBox from './components/ResultBox'
 import AddXPathButton from './components/AddXPathButton'
+import StopListeners from './components/StartCapture'
 import { xPath } from './model'
+import StartCapture from './components/StartCapture'
 
 const App: React.FC = () => {
 
@@ -13,6 +15,7 @@ const App: React.FC = () => {
       <span className="heading">XPathExporter</span>
       <ResultBox xpaths={xpaths}></ResultBox>
       <AddXPathButton xpaths={xpaths} setXPaths={setXPaths}></AddXPathButton>
+      <StartCapture></StartCapture>
     </div>
   )
 }
